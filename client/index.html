@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎨 Collaborative Canvas</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+    <h2>🎨 Real-Time Collaborative Canvas</h2>
+
+    <div id="topbar">
+        <div id="users">
+            <strong>Users:</strong> <span id="userList">—</span>
+        </div>
+
+        <div id="controls">
+            <label>Tool
+                <select id="tool">
+                    <option value="brush">Brush</option>
+                    <option value="eraser">Eraser</option>
+                </select>
+            </label>
+            <label>Color <input id="color" type="color" value="#0b66ff" /></label>
+            <label>Size <input id="size" type="range" min="1" max="60" value="4" /></label>
+            <button id="undo">Undo</button>
+            <button id="redo">Redo</button>
+            <button id="clear">Clear</button>
+        </div>
+    </div>
+
+    <div id="canvas-container">
+        <canvas id="mainCanvas"></canvas>
+        <canvas id="overlayCanvas"></canvas>
+        <canvas id="cursorCanvas"></canvas>
+    </div>
+
+    <!-- Socket.IO + Client Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/static/websocket.js"></script>
+    <script src="/static/canvas.js"></script>
+    <script src="/static/main.js"></script>
+</body>
+
+</html>

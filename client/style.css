@@ -1,0 +1,206 @@
+/* === Root Variables & Color Palette === */
+:root {
+  --accent: #0b66ff;
+  --accent-hover: #094dcc;
+  --danger: #e53e3e;
+  --danger-hover: #c53030;
+  
+  --bg-primary: #f8f9fb;    /* Page background */
+  --bg-secondary: #ffffff;  /* Card/Container background */
+  --border-color: #e2e8f0;   /* Subtle border */
+  
+  --text-primary: #2d3748;   /* Main text */
+  --text-secondary: #718096; /* Labels and secondary text */
+
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* === Global & Typography === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 1rem 0; /* Add some top/bottom padding */
+}
+
+h2 {
+  margin: 1rem 0 1.5rem 0;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* === Top Toolbar === */
+#topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  background: var(--bg-secondary);
+  border-radius: 10px; /* Softer radius */
+  padding: 12px 24px;
+  margin-bottom: 1.5rem; /* More space */
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+
+#users {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+#userList {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-left: 0.25rem;
+}
+
+/* === Controls === */
+#controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* Clean spacing */
+}
+
+#controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between label text and input */
+  margin: 0;
+  font-size: 0.875rem; /* 14px */
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Standardize Inputs */
+#controls input[type="range"],
+#controls select {
+  margin: 0;
+  padding: 4px 6px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#controls input[type="range"]:focus,
+#controls select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(11, 102, 255, 0.2);
+}
+
+#controls select {
+  cursor: pointer;
+}
+
+/* Color Input */
+#controls input[type="color"] {
+  margin: 0;
+  padding: 2px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--bg-secondary);
+  transition: border-color 0.2s;
+}
+
+#controls input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+#controls input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px; /* Inner radius for swatch */
+}
+#controls input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
+
+
+/* === Buttons === */
+button {
+  padding: 8px 14px;
+  margin: 0;
+  border: none;
+  background: var(--accent);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+/* Destructive Button */
+#clear {
+  background: var(--danger);
+}
+#clear:hover {
+  background: var(--danger-hover);
+}
+
+
+/* === Canvas === */
+#canvas-container {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  height: 700px;
+  border: 1px solid var(--border-color); /* Soft border */
+  border-radius: 10px; /* Match topbar */
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow-md);
+}
+
+canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#mainCanvas {
+  z-index: 0;
+}
+
+#overlayCanvas {
+  z-index: 1;
+  touch-action: none;
+  pointer-events: all;
+  cursor: crosshair; /* Cursor only on the interactive layer */
+}
+
+#cursorCanvas {
+  z-index: 2;
+  pointer-events: none;
+  cursor: none; /* Hide cursor if we're drawing a custom one */
+}
