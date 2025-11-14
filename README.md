@@ -28,10 +28,7 @@ Open two or more browser windows to `http://localhost:3000`. Draw — strokes wi
 - No authentication.
 - Smoothing is basic (midpoint quadratic curves). For very high-frequency inputs, memory/CPU could be optimized further.
 
-## Time spent
-
-~4–6 hours (design + implementation + comments).
-
 ## Suggestions
 
 See `ARCHITECTURE.md` for design reasoning and trade-offs.
+
